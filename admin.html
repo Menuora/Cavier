@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Caviar Admin</title>
+    <link rel="icon" href="img/core-img/favicon.ico">
+    <link href="style.css" rel="stylesheet">
+    <link href="css/responsive/responsive.css" rel="stylesheet">
+</head>
+
+<body class="admin-page">
+    <main class="admin-shell">
+        <section class="admin-login" id="adminLogin">
+            <div class="admin-panel">
+                <a class="navbar-brand" href="index.html">caviar</a>
+                <h1>Admin Login</h1>
+                <form id="adminLoginForm">
+                    <input type="text" name="username" class="form-control" placeholder="Username" autocomplete="username" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="current-password" required>
+                    <button type="submit" class="btn caviar-btn"><span></span> Login</button>
+                    <p class="form-message" id="adminLoginMessage"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="admin-dashboard d-none" id="adminDashboard">
+            <div class="admin-topbar">
+                <div>
+                    <a class="navbar-brand" href="index.html">caviar</a>
+                    <p>Dashboard</p>
+                </div>
+                <button type="button" class="btn caviar-btn" id="logoutBtn"><span></span> Logout</button>
+            </div>
+
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h2>Upload Images</h2>
+                    <form id="imageUploadForm">
+                        <input type="text" name="title" class="form-control" placeholder="Image title">
+                        <select name="category" class="form-control">
+                            <option value="menu">Full menu image</option>
+                            <option value="item">Individual item image</option>
+                        </select>
+                        <input type="file" name="image" class="form-control" accept="image/*" required>
+                        <button type="submit" class="btn caviar-btn"><span></span> Upload</button>
+                        <p class="form-message" id="uploadMessage"></p>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h2>Bookings</h2>
+                    <div class="admin-list" id="bookingsList"></div>
+                </div>
+            </div>
+
+            <div class="admin-card admin-settings-card">
+                <h2>Website Settings</h2>
+                <form id="settingsForm">
+                    <div class="admin-form-grid">
+                        <input type="text" name="hotelName" class="form-control" placeholder="Hotel name">
+                        <input type="text" name="openingHours" class="form-control" placeholder="Opening hours">
+                        <input type="url" name="facebookUrl" class="form-control" placeholder="Facebook link">
+                        <input type="url" name="instagramUrl" class="form-control" placeholder="Instagram link">
+                        <input type="url" name="twitterUrl" class="form-control" placeholder="Twitter link">
+                        <input type="url" name="mapEmbedUrl" class="form-control" placeholder="Google Maps embed iframe src link">
+                    </div>
+                    <button type="submit" class="btn caviar-btn"><span></span> Save Settings</button>
+                    <p class="form-message" id="settingsMessage"></p>
+                </form>
+            </div>
+
+            <div class="admin-card admin-settings-card">
+                <h2>Homepage Images</h2>
+                <form id="imageSettingsForm">
+                    <div class="admin-form-grid">
+                        <input type="url" name="heroImage1" class="form-control" placeholder="Hero image 1 link">
+                        <input type="url" name="heroCornerImage1" class="form-control" placeholder="Hero image 1 corner link">
+                        <input type="url" name="heroImage2" class="form-control" placeholder="Hero image 2 link">
+                        <input type="url" name="heroCornerImage2" class="form-control" placeholder="Hero image 2 corner link">
+                        <input type="url" name="aboutImage1" class="form-control" placeholder="About image 1 link">
+                        <input type="url" name="aboutImage2" class="form-control" placeholder="About image 2 link">
+                        <input type="url" name="reservationImage" class="form-control" placeholder="Book table side image link">
+                        <input type="url" name="menuHeaderImage" class="form-control" placeholder="Menu page header image link">
+                        <input type="url" name="imagesHeaderImage" class="form-control" placeholder="Images page header image link">
+                        <input type="url" name="contactHeaderImage" class="form-control" placeholder="Contact page header image link">
+                    </div>
+                    <button type="submit" class="btn caviar-btn"><span></span> Save Images</button>
+                    <p class="form-message" id="imageSettingsMessage"></p>
+                </form>
+            </div>
+
+            <div class="admin-card">
+                <h2>Uploaded Images</h2>
+                <div class="admin-image-grid" id="adminImages"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
