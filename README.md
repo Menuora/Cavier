@@ -1,55 +1,37 @@
-# Caviar Hotel Template
+# Cavier Restaurant Template
 
-This template includes a public restaurant website, a hidden admin dashboard at `/admin`, Cloudinary image uploads, and table bookings.
+This template includes a premium public restaurant website, an admin dashboard at `/admin`, Cloudinary image uploads, and table bookings. The application is completely serverless and runs on client-side Firebase (Auth & Firestore) and Cloudinary.
 
-## Local setup
+## Local Setup
 
 1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm install
-```
+2. Copy `js/env.example.js` to `js/env.js` and fill in your client's credentials:
+   * **Firebase:** Create a Firebase project, enable **Email/Password Authentication** and **Cloud Firestore**, and copy the web app credentials.
+   * **Cloudinary:** Create a Cloudinary account and enable an **Unsigned Upload Preset** (so the client side can upload images securely without exposing API secrets).
+   * **Admin Email/Password:** Set the default login email and password.
 
-2. Copy `.env.example` to `.env`.
+3. Start the website:
+   ```bash
+   npm run dev
+   ```
 
-3. Fill these values:
-
-```bash
-ADMIN_USERNAME=hoteladmin
-ADMIN_PASSWORD=change-this-password
-SESSION_SECRET=change-this-long-random-secret
-CLOUDINARY_CLOUD_NAME=your-cloud-name
-CLOUDINARY_API_KEY=your-api-key
-CLOUDINARY_API_SECRET=your-api-secret
-```
-
-4. Start the website:
-
-```bash
-npm run dev
-```
-
-5. Open:
-
-- Website: `http://localhost:3000`
-- Admin: `http://localhost:3000/admin`
+4. Open:
+   * Website: `http://localhost:3000`
+   * Admin Panel: `http://localhost:3000/admin` (Logging in with the default credentials for the first time will automatically provision the user in Firebase Auth!)
 
 ## Hosting
 
-Use Vercel for the full template because bookings, admin login, and Cloudinary uploads need backend API routes.
+Because the template is now 100% serverless, it can be hosted on **any** static provider such as **GitHub Pages, Netlify, Vercel, or AWS S3**. Simply swap the `js/env.js` credentials file to deploy this site for a new hotel/restaurant client!
 
-GitHub Pages can host only the static public pages. The `/admin` dashboard, booking form, and image uploads will not work on GitHub Pages unless you connect a separate backend.
+## Features
 
-## Admin Features
+* **Real-time Table Bookings:** Submitted to Firestore and managed in real-time by the admin.
+* **Website Configuration CMS:** Update hotel name, opening hours, social links, and Google Maps location instantly from the dashboard.
+* **Homepage Gallery & Banner Management:** Update hero and section images dynamically.
+* **Unsigned Media Uploads:** Upload full menus or individual dish items directly to Cloudinary and record metadata in Firestore.
+* **Password Manager:** Update the admin password directly from the Admin Panel.
 
-- Login with credentials from environment variables.
-- View table bookings.
-- Upload full menu images to Cloudinary.
-- Upload individual item images to Cloudinary.
-- Public image page at `/images.html`.
-- Edit website settings from the dashboard:
-  - hotel name
-  - social links
-  - Google Maps embed link
-  - opening hours
-  - homepage and page header image links
