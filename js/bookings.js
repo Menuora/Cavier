@@ -13,17 +13,14 @@
     form.addEventListener('submit', function (event) {
         event.preventDefault();
         setMessage('Sending booking...');
-        fetch('/api/bookings', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(form)))
-        })
-            .then(function (response) {
-                return response.json().then(function (data) {
-                    if (!response.ok) throw new Error(data.message || 'Booking failed.');
-                    return data;
-                });
-            })
+        
+        if (!window.App) {
+            setMessage('Application is not initialized.', 'error');
+            return;
+        }
+
+        var bookingData = Object.fromEntries(new FormData(form));
+        window.App.addBooking(bookingData)
             .then(function () {
                 form.reset();
                 setMessage('Thank you. Your table request has been sent.', 'success');

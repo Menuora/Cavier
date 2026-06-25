@@ -21,7 +21,9 @@ $RECYCLE.BIN/
 # Local app files
 .env
 node_modules/
+js/env.js
 
 # =========================
 # Operating System Files
 # =========================
+

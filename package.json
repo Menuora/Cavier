@@ -2,18 +2,11 @@
   "name": "caviar-hotel-template",
   "version": "1.0.0",
   "description": "Restaurant website template with admin dashboard, Cloudinary menu images, and table bookings.",
-  "main": "api/index.js",
   "scripts": {
-    "dev": "node api/index.js",
-    "start": "node api/index.js"
+    "dev": "npx http-server -p 3000",
+    "start": "npx http-server -p 3000"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cloudinary": "^2.5.1",
-    "cookie-parser": "^1.4.7",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2",
-    "multer": "^2.1.1"
+    "http-server": "^14.1.1"
   }
 }

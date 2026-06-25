@@ -44,19 +44,21 @@
         });
     }
 
-    fetch('/api/settings')
-        .then(function (response) { return response.json().then(function (data) { return { ok: response.ok, data: data }; }); })
-        .then(function (result) {
-            if (!result.ok) return;
-            var settings = result.data.settings || {};
-            var hotelName = settings.hotelName || 'Caviar';
-            setText('[data-hotel-name]', hotelName);
-            setText('[data-opening-hours]', settings.openingHours || '');
-            setSocial('[data-social-facebook]', settings.facebookUrl);
-            setSocial('[data-social-instagram]', settings.instagramUrl);
-            setSocial('[data-social-twitter]', settings.twitterUrl);
-            setMap(settings.mapEmbedUrl);
-            applyImages(settings);
-        })
-        .catch(function () {});
+    if (window.App) {
+        window.App.getSettings()
+            .then(function (settings) {
+                var hotelName = settings.hotelName || 'Caviar';
+                setText('[data-hotel-name]', hotelName);
+                setText('[data-opening-hours]', settings.openingHours || '');
+                setSocial('[data-social-facebook]', settings.facebookUrl);
+                setSocial('[data-social-instagram]', settings.instagramUrl);
+                setSocial('[data-social-twitter]', settings.twitterUrl);
+                setMap(settings.mapEmbedUrl);
+                applyImages(settings);
+            })
+            .catch(function (error) {
+                console.error('Settings load error:', error);
+            });
+    }
 })();
+
